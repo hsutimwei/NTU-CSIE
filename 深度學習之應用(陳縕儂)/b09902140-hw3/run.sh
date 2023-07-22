@@ -1,1 +1,0 @@
-python3.8 test.py --test_file "${1}" --output_file "${2}"
