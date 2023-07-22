@@ -1,0 +1,12 @@
+LICENSE
+README.md
+setup.py
+closed_form_matting/__init__.py
+closed_form_matting/closed_form_matting.py
+closed_form_matting/solve_foreground_background.py
+closed_form_matting.egg-info/PKG-INFO
+closed_form_matting.egg-info/SOURCES.txt
+closed_form_matting.egg-info/dependency_links.txt
+closed_form_matting.egg-info/entry_points.txt
+closed_form_matting.egg-info/requires.txt
+closed_form_matting.egg-info/top_level.txt

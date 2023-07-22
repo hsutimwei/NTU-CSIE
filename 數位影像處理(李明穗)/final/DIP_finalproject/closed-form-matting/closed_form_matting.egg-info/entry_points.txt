@@ -1,0 +1,3 @@
+[console_scripts]
+closed-form-matting = closed_form_matting.closed_form_matting:main
+solve-foreground-background = closed_form_matting.solve_foreground_background:main
