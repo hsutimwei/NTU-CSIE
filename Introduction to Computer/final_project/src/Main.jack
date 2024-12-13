@@ -1,0 +1,261 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/11/Pong/Main.jack
+
+/**
+ * The main class of the Pong game.
+ */
+class Main {
+
+    /** Initializes a Pong game and starts running it. */
+    function void main() {
+        var PongGame game;
+        var int key;
+        var int i;
+        var int j;
+        var Array checkO;
+        var Array checkX;
+        
+    // print text below title
+    do Output.moveCursor(10, 12); // row, column
+    do Output.printString("Ber Lin Chen is professional to OOXX");
+    do Output.moveCursor(18, 20); // row, column
+    do Output.printString("press any key to start");
+    do Screen.setColor(true);
+        let i=0;//O
+        let j=1;
+        let key=0;
+        let checkO= Array.new(11);
+        let checkX= Array.new(11);
+        while(j<10)
+        {
+            let checkO[j]=0;
+            let checkX[j]=0;
+            let j=j+1;
+        }
+        while(key=0)
+        {
+            let key = Keyboard.keyPressed();
+        }
+        do Screen.clearScreen();
+        do Screen.drawRectangle(70, 10, 80, 250);
+        do Screen.drawRectangle(180, 10, 190, 250);
+        do Screen.drawRectangle(290, 10, 300, 250);
+        do Screen.drawRectangle(400, 10, 410, 250);
+        do Screen.drawRectangle(70, 10, 410, 20);
+        do Screen.drawRectangle(70, 90, 410, 100);
+        do Screen.drawRectangle(70, 170, 410, 180);
+        do Screen.drawRectangle(70, 240, 410, 250);
+        
+        while(key>-1)
+        {
+            let key = Keyboard.keyPressed();
+            //1是49~57
+            if((key=49) & (checkX[1]=0))
+            {
+                do Screen.drawCircle(130, 210, 25);
+                let checkO[1]=1;
+            }
+            if((key=50) & (checkX[2]=0))
+            {
+                do Screen.drawCircle(240, 210, 25);
+                let checkO[2]=1;
+            }
+            if((key=51) & (checkX[3]=0))
+            {
+                do Screen.drawCircle(350, 210, 25);
+                let checkO[3]=1;
+            }
+            if((key=52) & (checkX[4]=0))
+            {
+                do Screen.drawCircle(130, 135, 25);
+                let checkO[4]=1;
+            }
+            if((key=53) & (checkX[5]=0))
+            {
+                do Screen.drawCircle(240, 135, 25);
+                let checkO[5]=1;
+            }
+            if((key=54) & (checkX[6]=0))
+            {   
+                do Screen.drawCircle(350, 135, 25);
+                let checkO[6]=1;
+            }
+            if((key=55) & (checkX[7]=0))
+            {
+                do Screen.drawCircle(130, 55, 25);
+                let checkO[7]=1;
+            }
+            if((key=56) & (checkX[8]=0))
+            {   
+                do Screen.drawCircle(240, 55, 25);
+                let checkO[8]=1;
+            }
+            if((key=57) & (checkX[9]=0))
+            {   
+                do Screen.drawCircle(350, 55, 25);
+                let checkO[9]=1;
+            }
+            if((key=81) & (checkO[7]=0))//Q
+            {   
+                do Screen.drawLine(80, 20, 180, 90);
+                do Screen.drawLine(180, 20, 80, 90);
+                let checkX[7]=1;
+            }
+            if((key=87) & (checkO[8]=0))//W
+            {   
+                do Screen.drawLine(190, 20, 290, 90);
+                do Screen.drawLine(290, 20, 190, 90);
+                let checkX[8]=1;
+            }
+            if((key=69) & (checkO[9]=0))//E
+            {   
+                do Screen.drawLine(300, 20, 400, 90);
+                do Screen.drawLine(400, 20, 300, 90);
+                let checkX[9]=1;
+            }
+            if((key=65) & (checkO[4]=0))//A
+            {   
+                do Screen.drawLine(80, 100, 180, 170);
+                do Screen.drawLine(180, 100, 80, 170);
+                let checkX[4]=1;
+            }
+            if((key=83) & (checkO[5]=0))//S
+            {   
+                do Screen.drawLine(190, 100, 290, 170);
+                do Screen.drawLine(290, 100, 190, 170);
+                let checkX[5]=1;
+            }
+            if((key=68) & (checkO[6]=0))//D
+            {   
+                do Screen.drawLine(300, 100, 400, 170);
+                do Screen.drawLine(400, 100, 300, 170);
+                let checkX[6]=1;
+            }
+            if((key=90) & (checkO[1]=0))//Z
+            {   
+                do Screen.drawLine(80, 180, 180, 240);
+                do Screen.drawLine(180, 180, 80, 240);
+                let checkX[1]=1;
+            }
+            if((key=88) & (checkO[2]=0))//X
+            {   
+                do Screen.drawLine(190, 180, 290, 240);
+                do Screen.drawLine(290, 180, 190, 240);
+                let checkX[2]=1;
+            }
+            if((key=67) & (checkO[3]=0))//C
+            {   
+                do Screen.drawLine(300, 180, 400, 240);
+                do Screen.drawLine(400, 180, 300, 240);
+                let checkX[3]=1;
+            }
+            if((checkO[7]=1) & (checkO[8]=1) & (checkO[9]=1))
+            {
+                do Output.moveCursor(10, 54);
+                do Output.printString("O wins!!");
+                return;
+            }
+            if((checkO[4]=1) & (checkO[5]=1) & (checkO[6]=1))
+            {
+                do Output.moveCursor(10, 54);
+                do Output.printString("O wins!!");
+                return;
+            }
+            if((checkO[1]=1) & (checkO[2]=1) & (checkO[3]=1))
+            {
+                do Output.moveCursor(10, 54);
+                do Output.printString("O wins!!");
+                return;
+            }
+            if((checkO[1]=1) & (checkO[4]=1) & (checkO[7]=1))
+            {
+                do Output.moveCursor(10, 54);
+                do Output.printString("O wins!!");
+                return;
+            }
+            if((checkO[2]=1) & (checkO[5]=1) & (checkO[8]=1))
+            {
+                do Output.moveCursor(10, 54);
+                do Output.printString("O wins!!");
+                return;
+            }
+            if((checkO[3]=1) & (checkO[6]=1) & (checkO[9]=1))
+            {
+                do Output.moveCursor(10, 54);
+                do Output.printString("O wins!!");
+                return;
+            }
+            if((checkO[1]=1) & (checkO[5]=1) & (checkO[9]=1))
+            {
+                do Output.moveCursor(10, 54);
+                do Output.printString("O wins!!");
+                return;
+            }
+            if((checkO[7]=1) & (checkO[5]=1) & (checkO[3]=1))
+            {
+                do Output.moveCursor(10, 54);
+                do Output.printString("O wins!!");
+                return;
+            }
+            if((checkX[7]=1) & (checkX[8]=1) & (checkX[9]=1))
+            {
+                do Output.moveCursor(10, 54);
+                do Output.printString("X wins!!");
+                return;
+            }
+            if((checkX[4]=1) & (checkX[5]=1) & (checkX[6]=1))
+            {
+                do Output.moveCursor(10, 54);
+                do Output.printString("X wins!!");
+                return;
+            }
+            if((checkX[1]=1) & (checkX[2]=1) & (checkX[3]=1))
+            {
+                do Output.moveCursor(10, 54);
+                do Output.printString("X wins!!");
+                return;
+            }
+            if((checkX[1]=1) & (checkX[4]=1) & (checkX[7]=1))
+            {
+                do Output.moveCursor(10, 54);
+                do Output.printString("X wins!!");
+                return;
+            }
+            if((checkX[2]=1) & (checkX[5]=1) & (checkX[8]=1))
+            {
+                do Output.moveCursor(10, 54);
+                do Output.printString("X wins!!");
+                return;
+            }
+            if((checkX[3]=1) & (checkX[6]=1) & (checkX[9]=1))
+            {
+                do Output.moveCursor(10, 54);
+                do Output.printString("X wins!!");
+                return;
+            }
+            if((checkX[1]=1) & (checkX[5]=1) & (checkX[9]=1))
+            {
+                do Output.moveCursor(10, 54);
+                do Output.printString("X wins!!");
+                return;
+            }
+            if((checkX[7]=1) & (checkX[5]=1) & (checkX[3]=1))
+            {
+                do Output.moveCursor(10, 54);
+                do Output.printString("X wins!!");
+                return;
+            }
+            if(((checkO[1]=1) | (checkX[1]=1)) & ((checkO[2]=1) | (checkX[2]=1)) & ((checkO[3]=1) | (checkX[3]=1)) & ((checkO[4]=1) | (checkX[4]=1)) & ((checkO[5]=1) | (checkX[5]=1)) & ((checkO[6]=1) | (checkX[6]=1)) & ((checkO[7]=1) | (checkX[7]=1)) & ((checkO[8]=1) | (checkX[8]=1)) & ((checkO[9]=1) | (checkX[9]=1)))
+            {
+                do Output.moveCursor(10, 54);
+                do Output.printString("Tie...");
+                return;
+            }
+            
+        }
+        
+        return;
+    }
+}
